@@ -1,0 +1,18 @@
+{{define "inicio"}}
+  {{template "cabecera"}}
+
+  <div id="notfound">
+    <div class="notfound">
+      <div class="notfound-404">
+        <h2>Búsqueda</h2>
+      </div>
+      <form method="get" action="/superhero">
+        <input id = "input_busqueda" name = "input_busqueda" class = ""><br><br>
+        <a href="#" >Buscar</a><br><br>
+        <button id="btn_c" name = "btn_c" type="submit" class = "">Buscar</button>
+
+      </form>
+    </div>
+  </div>
+  {{template "pie"}}
+{{end}}
