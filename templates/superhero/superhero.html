@@ -1,0 +1,202 @@
+
+{{define "superhero"}}
+    {{template "cabecera"}}
+    <div id="notfound">
+        <button onclick="retroceso()" style="background: black; border-color: #030005; color: white; position: absolute; left: 10px; top: 10%">retroceso</button>
+        <div class="text-center fluid" style="border-color: white;">
+            <img src = "{{ .Image.Url }}" class="img-fluid" alt="Image SuperHeros" width="310px" height="500px" onerror="this.src='https://cdn.icon-icons.com/images/no_results2.png'">
+        </div>
+        <button class="notfound-404" onclick="avanzar()" style="background: black; border-color: #030005; color: white; position: absolute; right: 10px; top: 10%">Avanzar</button>
+        <!-- <a href="" onclick="retroceso()" style="background: black; border-color: #030005; color: white; position: absolute">retroceso</a> -->
+        <div class="container overflow-hidden text-center">
+
+            <table id="mytable" class="table table-dark">
+                <thead>
+                Super Hero
+                </thead>
+                <tbody>
+                <tr class="table-active">
+                    <td colspan="4" class="table-active">Super Hero 2</td>
+                </tr>
+                <tr>
+                    <th scope="row">N° </th>
+                    <td id="td_id" data-info="{{.Id}}" colspan="3" class="table-active">{{.Id}}</td>
+
+                </tr>
+                <tr>
+                    <th scope="row">Nombre: </th>
+                    <td colspan="3" class="table-active">{{.Name}}</td>
+                </tr>
+                <tr class="table-active">
+                    <td colspan="4" class="table-active"><img width="36" height="36" src="https://img.icons8.com/nolan/64/lightning-bolt.png" alt="lightning-bolt"/>Estadísticas de Poder</td>
+                </tr>
+                <tr>
+                    <th scope="row">Inteligencia: </th>
+                    <td >
+                        <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar" style="width: {{.Powerstats.Intelligence}}%; background-color: green">{{.Powerstats.Intelligence}}%</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Fortaleza: </th>
+                    <td >
+                        <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar" style="width: {{.Powerstats.Strength}}%; background-color: green">{{.Powerstats.Strength}}%</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Velocidad: </th>
+                    <td >
+                        <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar" style="width: {{.Powerstats.Speed}}%; background-color: green">{{.Powerstats.Speed}}%</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Durabilidad: </th>
+                    <td >
+                        <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar" style="width: {{.Powerstats.Durability}}%; background-color: green">{{.Powerstats.Durability}}%</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Poder: </th>
+                    <td >
+                        <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar" style="width: {{.Powerstats.Power}}%; background-color: green">{{.Powerstats.Power}}%</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Combate: </th>
+                    <td >
+                        <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar" style="width: {{.Powerstats.Combat}}%; background-color: green">{{.Powerstats.Combat}}%</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="table-active">
+                    <td colspan="4" class="table-active"><img width="48" height="48" src="https://img.icons8.com/color/48/book.png" alt="book"/>Biografía</td>
+                </tr>
+                <tr>
+                    <th scope="row">Nombre Completo: </th>
+                    <td >
+                        {{.Biography.FullName}}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Alter Egos: </th>
+                    <td >
+                        {{.Biography.AlterEgos}}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Alias : </th>
+                    <td >
+                        {{.Biography.Aliases}}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Lugar de nacimiento: </th>
+                    <td >
+                        {{.Biography.PlaceOfBirth}}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Primera impresión: </th>
+                    <td >
+                        {{.Biography.FirstAppearance}}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Editor: </th>
+                    <td >
+                        {{.Biography.Publisher}}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Alineación: </th>
+                    <td >
+                        {{.Biography.Alignment}}
+                    </td>
+                </tr>
+                <tr class="table-active">
+                    <td colspan="4" class="table-active"><img src="https://img.icons8.com/color/48/english-mustache.png"></img>Apariencia</td>
+                </tr>
+                <tr>
+                    <th scope="row">Género: </th>
+                    <td >
+                        {{.Appearance.Gender}}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Carrera: </th>
+                    <td >
+                        {{.Appearance.Race}}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Altura: </th>
+                    <td >
+                        {{.Appearance.Height}}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Peso: </th>
+                    <td >
+                        {{.Appearance.Weight}}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Color de Ojos: </th>
+                    <td >
+                        {{.Appearance.EyeColor}}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Color de Cabello: </th>
+                    <td >
+                        {{.Appearance.HairColor}}
+                    </td>
+                </tr>
+                <tr class="table-active">
+                    <td colspan="4" class="table-active"><img width="36" height="36" src="https://img.icons8.com/color/48/hard-working.png" alt="hard-working"/>Trabajo</td>
+                </tr>
+                <tr>
+                    <th scope="row">Ocupación: </th>
+                    <td >
+                        {{.Work.Occupation}}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Base: </th>
+                    <td >
+                        {{.Work.Base}}
+                    </td>
+                </tr>
+                <tr class="table-active">
+                    <td colspan="4" class="table-active"><img width="36" height="36" src="https://img.icons8.com/color-glass/48/social-network.png" alt="social-network"/>Conexiones</td>
+                </tr>
+                <tr>
+                    <th scope="row">Afiliación de grupo: </th>
+                    <td >
+                        {{.Connections.GroupAffiliation}}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Parientes: </th>
+                    <td >
+                        {{.Connections.Relatives}}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+    {{template "pie"}}
+{{end}}
